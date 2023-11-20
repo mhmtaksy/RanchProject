@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RanchProject.Models.Aranch>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h1>Ranchs List</h1>
+<br />
+<br />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RanchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RanchAdress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RanchNoe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RanchGiro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RanchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RanchAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RanchNoe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RanchGiro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RanchID">Edit</a> |               
+                <a asp-action="Delete" asp-route-id="@item.RanchID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

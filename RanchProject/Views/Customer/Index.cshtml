@@ -1,0 +1,61 @@
+﻿@model IEnumerable<RanchProject.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h1>Customer List</h1>
+<br />
+<br />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerSurname)
+            </td>
+            <td>
+                    @if (item.CustomerGender == true)
+                    {
+                        <span>Male</span>
+                    }
+                    else
+                    {
+                        <span>Female</span>
+                    }
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CustomerID">Edit</a> |                
+                <a asp-action="Delete" asp-route-id="@item.CustomerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

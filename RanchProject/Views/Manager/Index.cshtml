@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RanchProject.Models.Manager>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<h1>Manager List</h1>
+<br />
+<br />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerSurname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerSurname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ManagerID">Edit</a> |                
+                <a asp-action="Delete" asp-route-id="@item.ManagerID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
